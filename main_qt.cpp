@@ -199,11 +199,20 @@ private:
 
     QSpinBox* memBlocks_ = nullptr;
     QSpinBox* memProcs_ = nullptr;
+    QComboBox* memMode_ = nullptr;
+    QSpinBox* memMemSize_ = nullptr;
+    QSpinBox* memPageSize_ = nullptr;
     QTableWidget* memBlocksTable_ = nullptr;
     QTableWidget* memProcsTable_ = nullptr;
     QComboBox* memAlgo_ = nullptr;
     QTableWidget* memResult_ = nullptr;
     QLabel* memTotals_ = nullptr;
+    QPlainTextEdit* memDetails_ = nullptr;
+    QLabel* memBlocksTitle_ = nullptr;
+    QLabel* memBlocksRowLabel_ = nullptr;
+    QLabel* memAlgoRowLabel_ = nullptr;
+    QLabel* memMemSizeRowLabel_ = nullptr;
+    QLabel* memPageSizeRowLabel_ = nullptr;
 
     QSpinBox* pageFrames_ = nullptr;
     QLineEdit* pageRefs_ = nullptr;
@@ -356,18 +365,34 @@ private:
         auto* left = new QGroupBox("Memory Input", tab);
         auto* leftLayout = new QVBoxLayout(left);
         auto* form = new QFormLayout();
+        memMode_ = new QComboBox(left);
+        memMode_->addItems({"Contiguous Allocation", "Non-Contiguous (Paging)"});
         memBlocks_ = new QSpinBox(left);
         memBlocks_->setRange(1, 20);
         memBlocks_->setValue(5);
+        memMemSize_ = new QSpinBox(left);
+        memMemSize_->setRange(1, 8192);
+        memMemSize_->setValue(1024);
+        memPageSize_ = new QSpinBox(left);
+        memPageSize_->setRange(1, 1024);
+        memPageSize_->setValue(64);
         memProcs_ = new QSpinBox(left);
         memProcs_->setRange(1, 20);
         memProcs_->setValue(5);
         memAlgo_ = new QComboBox(left);
         memAlgo_->addItems({"First Fit", "Best Fit", "Next Fit"});
+        form->addRow("Mode", memMode_);
         form->addRow("Blocks", memBlocks_);
+        form->addRow("Memory Size", memMemSize_);
+        form->addRow("Page Size", memPageSize_);
         form->addRow("Processes", memProcs_);
         form->addRow("Algorithm", memAlgo_);
         leftLayout->addLayout(form);
+
+        memBlocksRowLabel_ = qobject_cast<QLabel*>(form->labelForField(memBlocks_));
+        memAlgoRowLabel_ = qobject_cast<QLabel*>(form->labelForField(memAlgo_));
+        memMemSizeRowLabel_ = qobject_cast<QLabel*>(form->labelForField(memMemSize_));
+        memPageSizeRowLabel_ = qobject_cast<QLabel*>(form->labelForField(memPageSize_));
 
         memBlocksTable_ = new QTableWidget(left);
         memBlocksTable_->setColumnCount(1);
@@ -379,7 +404,8 @@ private:
         memProcsTable_->setHorizontalHeaderLabels({"Process Size"});
         memProcsTable_->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-        leftLayout->addWidget(new QLabel("Blocks"));
+        memBlocksTitle_ = new QLabel("Blocks");
+        leftLayout->addWidget(memBlocksTitle_);
         leftLayout->addWidget(memBlocksTable_, 1);
         leftLayout->addWidget(new QLabel("Processes"));
         leftLayout->addWidget(memProcsTable_, 1);
@@ -397,13 +423,23 @@ private:
         memTotals_ = new QLabel("Totals: -", right);
         rightLayout->addWidget(memResult_, 1);
         rightLayout->addWidget(memTotals_);
+        memDetails_ = new QPlainTextEdit(right);
+        memDetails_->setReadOnly(true);
+        memDetails_->setPlaceholderText("Details (paging mode)");
+        rightLayout->addWidget(memDetails_, 0);
         layout->addWidget(right, 1);
 
         connect(memBlocks_, QOverload<int>::of(&QSpinBox::valueChanged), this, [this]() { refreshMemoryTables(); });
         connect(memProcs_, QOverload<int>::of(&QSpinBox::valueChanged), this, [this]() { refreshMemoryTables(); });
+        connect(memMode_, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int) { refreshMemoryUi(); });
+        connect(memMemSize_, QOverload<int>::of(&QSpinBox::valueChanged), this, [this](int size) {
+            memPageSize_->setMaximum(std::max(1, size));
+            refreshMemoryUi();
+        });
+        connect(memPageSize_, QOverload<int>::of(&QSpinBox::valueChanged), this, [this](int) { refreshMemoryUi(); });
         connect(run, &QPushButton::clicked, this, [this]() { runMemory(); });
 
-        refreshMemoryTables();
+        refreshMemoryUi();
         return tab;
     }
 
@@ -599,18 +635,126 @@ private:
     }
 
     void refreshMemoryTables() {
-        int blocks = memBlocks_->value();
         int procs = memProcs_->value();
-        memBlocksTable_->setRowCount(blocks);
+
+        if (memMode_ && memMode_->currentIndex() == 1) {
+            memBlocksTable_->setRowCount(0);
+        } else {
+            int blocks = memBlocks_->value();
+            memBlocksTable_->setRowCount(blocks);
+            for (int i = 0; i < blocks; ++i) ensureItem(memBlocksTable_, i, 0, "100");
+        }
+
         memProcsTable_->setRowCount(procs);
-        for (int i = 0; i < blocks; ++i) ensureItem(memBlocksTable_, i, 0, "100");
         for (int i = 0; i < procs; ++i) ensureItem(memProcsTable_, i, 0, "90");
     }
 
+    void refreshMemoryUi() {
+        bool paging = memMode_ && memMode_->currentIndex() == 1;
+
+        if (memBlocks_) memBlocks_->setVisible(!paging);
+        if (memBlocksRowLabel_) memBlocksRowLabel_->setVisible(!paging);
+        if (memBlocksTable_) memBlocksTable_->setVisible(!paging);
+        if (memBlocksTitle_) memBlocksTitle_->setVisible(!paging);
+
+        if (memMemSize_) memMemSize_->setVisible(paging);
+        if (memMemSizeRowLabel_) memMemSizeRowLabel_->setVisible(paging);
+        if (memPageSize_) memPageSize_->setVisible(paging);
+        if (memPageSizeRowLabel_) memPageSizeRowLabel_->setVisible(paging);
+
+        if (memAlgo_) {
+            memAlgo_->clear();
+            if (paging) memAlgo_->addItems({"Paging Allocation"});
+            else memAlgo_->addItems({"First Fit", "Best Fit", "Next Fit"});
+        }
+        if (memAlgoRowLabel_) memAlgoRowLabel_->setVisible(true);
+
+        if (memResult_) {
+            if (paging) {
+                memResult_->setColumnCount(6);
+                memResult_->setHorizontalHeaderLabels({"PID", "ProcSize", "Pages", "Frames", "IntFrag", "Allocated"});
+            } else {
+                memResult_->setColumnCount(5);
+                memResult_->setHorizontalHeaderLabels({"PID", "ProcSize", "Block", "BlockSize", "IntFrag"});
+            }
+        }
+
+        if (memDetails_) {
+            memDetails_->setVisible(paging);
+            if (!paging) memDetails_->clear();
+        }
+
+        if (memTotals_) memTotals_->setText("Totals: -");
+        refreshMemoryTables();
+    }
+
     void runMemory() {
+        bool paging = memMode_ && memMode_->currentIndex() == 1;
+
         std::vector<int> blocks, procs;
-        for (int i = 0; i < memBlocksTable_->rowCount(); ++i) blocks.push_back(cellInt(memBlocksTable_, i, 0, 0));
+        if (!paging) {
+            for (int i = 0; i < memBlocksTable_->rowCount(); ++i) blocks.push_back(cellInt(memBlocksTable_, i, 0, 0));
+        }
         for (int i = 0; i < memProcsTable_->rowCount(); ++i) procs.push_back(cellInt(memProcsTable_, i, 0, 0));
+
+        if (paging) {
+            int memorySize = memMemSize_->value();
+            int pageSize = memPageSize_->value();
+            if (pageSize <= 0 || pageSize > memorySize) {
+                memTotals_->setText("Totals: invalid paging parameters (pageSize must be <= memorySize)");
+                return;
+            }
+
+            PagingResult res = pagingAllocate(memorySize, pageSize, procs);
+
+            memResult_->setRowCount(static_cast<int>(procs.size()));
+            QString details;
+            details += QString("Physical Memory=%1  Page/Frame=%2  Frames=%3  Free=%4  Remainder=%5\n\n")
+                           .arg(res.memorySize)
+                           .arg(res.pageSize)
+                           .arg(res.totalFrames)
+                           .arg(res.freeFrames)
+                           .arg(res.systemRemainder);
+
+            for (int i = 0; i < static_cast<int>(procs.size()); ++i) {
+                bool allocated = true;
+                for (int f : res.pageTable[i]) {
+                    if (f == -1) {
+                        allocated = false;
+                        break;
+                    }
+                }
+
+                setCell(memResult_, i, 0, QString::number(i + 1));
+                setCell(memResult_, i, 1, QString::number(procs[i]));
+                setCell(memResult_, i, 2, QString::number(res.pagesNeeded[i]));
+
+                if (!allocated) {
+                    setCell(memResult_, i, 3, "-");
+                    setCell(memResult_, i, 4, "-");
+                    setCell(memResult_, i, 5, "NO");
+                    details += QString("P%1: NOT ALLOCATED\n").arg(i + 1);
+                } else {
+                    setCell(memResult_, i, 3, QString::number(res.pagesNeeded[i]));
+                    setCell(memResult_, i, 4, QString::number(res.internal[i]));
+                    setCell(memResult_, i, 5, "YES");
+
+                    details += QString("P%1: ").arg(i + 1);
+                    for (int p = 0; p < static_cast<int>(res.pageTable[i].size()); ++p) {
+                        if (p) details += "  ";
+                        details += QString("%1->%2").arg(p).arg(res.pageTable[i][p]);
+                    }
+                    details += "\n";
+                }
+            }
+
+            if (memDetails_) memDetails_->setPlainText(details);
+            memTotals_->setText(QString("Totals: Internal=%1  Unallocated=%2  FreeFrames=%3")
+                                .arg(res.totalInternal)
+                                .arg(res.unallocated)
+                                .arg(res.freeFrames));
+            return;
+        }
 
         MemoryResult res{};
         QString algo = memAlgo_->currentText();

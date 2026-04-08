@@ -1,18 +1,8 @@
-#ifndef MEMORY_ALGORITHMS_H
-#define MEMORY_ALGORITHMS_H
+#pragma once
 
-#include <vector>
+// Umbrella header to keep existing includes working while the module is split into:
+// - contiguous/
+// - non_contiguous/
 
-struct MemoryResult {
-    std::vector<int> allocation;
-    std::vector<int> internal;
-    int totalInternal = 0;
-    int totalExternal = 0;
-    int unallocated = 0;
-};
-
-MemoryResult firstFit(const std::vector<int>& blockSize, const std::vector<int>& procSize);
-MemoryResult bestFit(const std::vector<int>& blockSize, const std::vector<int>& procSize);
-MemoryResult nextFit(const std::vector<int>& blockSize, const std::vector<int>& procSize);
-
-#endif
+#include "contiguous/memory_algorithms.h"
+#include "non_contiguous/paging_algorithms.h"

@@ -782,7 +782,7 @@ Line-by-line explanations for every file in the project.
 - L141: `    return 0;` — Return from the function.
 - L142: `}` — Close the current scope block.
 
-## File: memory_management\best_fit.cpp
+## File: memory_management\contiguous\best_fit.cpp
 - L1: `#include <iomanip>` — Include required standard or project header so symbols compile.
 - L2: `#include <iostream>` — Include required standard or project header so symbols compile.
 - L3: `#include <string>` — Include required standard or project header so symbols compile.
@@ -878,7 +878,7 @@ Line-by-line explanations for every file in the project.
 - L93: `    std::cout << "Unallocated Processes: " << unallocated << "\n";` — Print formatted output to the console.
 - L94: `}` — Close the current scope block.
 
-## File: memory_management\first_fit.cpp
+## File: memory_management\contiguous\first_fit.cpp
 - L1: `#include <iomanip>` — Include required standard or project header so symbols compile.
 - L2: `#include <iostream>` — Include required standard or project header so symbols compile.
 - L3: `#include <string>` — Include required standard or project header so symbols compile.
@@ -973,7 +973,7 @@ Line-by-line explanations for every file in the project.
 - L92: `    std::cout << "Unallocated Processes: " << unallocated << "\n";` — Print formatted output to the console.
 - L93: `}` — Close the current scope block.
 
-## File: memory_management\next_fit.cpp
+## File: memory_management\contiguous\next_fit.cpp
 - L1: `#include <iomanip>` — Include required standard or project header so symbols compile.
 - L2: `#include <iostream>` — Include required standard or project header so symbols compile.
 - L3: `#include <string>` — Include required standard or project header so symbols compile.
@@ -1299,10 +1299,10 @@ Line-by-line explanations for every file in the project.
 - L14: `- Priority Scheduling (Non-Preemptive)` — Markdown list item that enumerates content.
 - L15: `- Round Robin` — Markdown list item that enumerates content.
 - L16: `` — Blank line for readability and separation.
-- L17: `### Memory Management (Allocation)` — Markdown heading that organizes the document.
-- L18: `- First Fit` — Markdown list item that enumerates content.
-- L19: `- Best Fit` — Markdown list item that enumerates content.
-- L20: `- Next Fit` — Markdown list item that enumerates content.
+- L17: `### Memory Management` — Markdown heading that organizes the document.
+- L18: `- Contiguous Allocation: First Fit, Best Fit, Next Fit` — Markdown list item that enumerates content.
+- L19: `- Non-Contiguous Allocation: Paging Allocation` — Markdown list item that enumerates content.
+- L20: `` — Blank line for readability and separation.
 - L21: `` — Blank line for readability and separation.
 - L22: `### Page Replacement` — Markdown heading that organizes the document.
 - L23: `- FIFO` — Markdown list item that enumerates content.
@@ -1319,7 +1319,7 @@ Line-by-line explanations for every file in the project.
 - L34: `From the project root:` — Markdown paragraph text for documentation.
 - L35: `` — Blank line for readability and separation.
 - L36: ````bash` — Markdown code fence boundary for a code block.
-- L37: `g++ main.cpp cpu_scheduling/*.cpp memory_management/*.cpp page_replacement/*.cpp disk_scheduling/*.cpp utils/*.cpp -o MiniOS` — Markdown paragraph text for documentation.
+- L37: `g++ main.cpp cpu_scheduling/*.cpp memory_management/contiguous/*.cpp memory_management/non_contiguous/*.cpp page_replacement/*.cpp disk_scheduling/*.cpp utils/*.cpp -o MiniOS` — Markdown paragraph text for documentation.
 - L38: ````` — Markdown code fence boundary for a code block.
 - L39: `` — Blank line for readability and separation.
 - L40: `## Execution` — Markdown heading that organizes the document.

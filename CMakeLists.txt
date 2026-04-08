@@ -14,10 +14,12 @@ add_executable(MiniOSSimulator
     cpu_scheduling/priority.cpp
     cpu_scheduling/round_robin.cpp
     cpu_scheduling/schedulers_gui.cpp
-    memory_management/first_fit.cpp
-    memory_management/best_fit.cpp
-    memory_management/next_fit.cpp
-    memory_management/memory_algorithms.cpp
+    memory_management/contiguous/first_fit.cpp
+    memory_management/contiguous/best_fit.cpp
+    memory_management/contiguous/next_fit.cpp
+    memory_management/contiguous/memory_algorithms.cpp
+    memory_management/non_contiguous/paging_algorithms.cpp
+    memory_management/non_contiguous/paging_console.cpp
     page_replacement/fifo.cpp
     page_replacement/lru.cpp
     page_replacement/optimal.cpp

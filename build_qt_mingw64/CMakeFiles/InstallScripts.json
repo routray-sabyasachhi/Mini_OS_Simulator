@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/project8th/MiniOS-Simulator/build_qt_mingw64/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

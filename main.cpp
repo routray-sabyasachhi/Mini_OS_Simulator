@@ -23,6 +23,7 @@ ScheduleResult runRoundRobin();
 void runFirstFit();
 void runBestFit();
 void runNextFit();
+void runPagingAllocation();
 
 // Page replacement
 void runFIFOPageReplacement();
@@ -67,9 +68,9 @@ static void cpuSchedulingMenu() {
     }
 }
 
-static void memoryManagementMenu() {
+static void contiguousMemoryMenu() {
     while (true) {
-        ui::printTitle("Memory Management");
+        ui::printTitle("Memory Management - Contiguous Allocation");
         std::cout << "1. First Fit\n";
         std::cout << "2. Best Fit\n";
         std::cout << "3. Next Fit\n";
@@ -80,6 +81,31 @@ static void memoryManagementMenu() {
         if (choice == 2) runBestFit();
         if (choice == 3) runNextFit();
         ui::waitForEnter();
+    }
+}
+
+static void nonContiguousMemoryMenu() {
+    while (true) {
+        ui::printTitle("Memory Management - Non-Contiguous Allocation");
+        std::cout << "1. Paging Allocation\n";
+        std::cout << "2. Back\n";
+        int choice = ui::readInt("Select option: ", 1, 2);
+        if (choice == 2) return;
+        if (choice == 1) runPagingAllocation();
+        ui::waitForEnter();
+    }
+}
+
+static void memoryManagementMenu() {
+    while (true) {
+        ui::printTitle("Memory Management");
+        std::cout << "1. Contiguous Allocation\n";
+        std::cout << "2. Non-Contiguous Allocation\n";
+        std::cout << "3. Back\n";
+        int choice = ui::readInt("Select option: ", 1, 3);
+        if (choice == 3) return;
+        if (choice == 1) contiguousMemoryMenu();
+        if (choice == 2) nonContiguousMemoryMenu();
     }
 }
 

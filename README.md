@@ -8,7 +8,9 @@ Developer: SABYASACHHI ROUTRAY
 
 **Algorithms Included**
 - CPU Scheduling: FCFS, SJF (Non-Preemptive), SJF (Preemptive / SRTF), Priority (Non-Preemptive), Round Robin
-- Memory Management (Allocation): First Fit, Best Fit, Next Fit
+- Memory Management:
+  - Contiguous Allocation: First Fit, Best Fit, Next Fit
+  - Non-Contiguous Allocation: Paging Allocation
 - Page Replacement: FIFO, LRU, Optimal
 - Disk Scheduling: FCFS, SSTF, SCAN, C-SCAN
 
@@ -17,7 +19,9 @@ Developer: SABYASACHHI ROUTRAY
 - `main_qt.cpp`: Qt GUI entry point
 - `utils/input_helper_console.cpp`: console-only UI helpers (no Qt)
 - `utils/input_helper_qt.cpp`: Qt UI helpers (Qt Widgets)
-- `cpu_scheduling/`, `memory_management/`, `page_replacement/`, `disk_scheduling/`: algorithm implementations
+- `cpu_scheduling/`, `page_replacement/`, `disk_scheduling/`: algorithm implementations
+- `memory_management/contiguous/`: contiguous allocation (First/Best/Next Fit)
+- `memory_management/non_contiguous/`: non-contiguous allocation (Paging)
 - `utils/`: shared utilities
 
 **Software Requirements (Windows Only)**
@@ -42,7 +46,7 @@ Qt (Qt Online Installer): https://www.qt.io/download
 **Build And Run (Console App - Windows)**
 From the project root:
 ```
-g++ main.cpp cpu_scheduling/*.cpp memory_management/*.cpp page_replacement/*.cpp disk_scheduling/*.cpp utils/input_helper_console.cpp -o MiniOS
+g++ main.cpp cpu_scheduling/*.cpp memory_management/contiguous/*.cpp memory_management/non_contiguous/*.cpp page_replacement/*.cpp disk_scheduling/*.cpp utils/input_helper_console.cpp -o MiniOS
 ```
 Run:
 ```
@@ -59,6 +63,20 @@ cmake --build build --config Release
 Run:
 ```
 .\build\Release\MiniOSSimulator.exe
+```
+
+**Build And Run (Qt GUI App - Windows, MinGW 64-bit Qt Kit)**
+If you installed the Qt *MinGW 64-bit* kit (e.g. `C:\Qt\6.10.2\mingw_64`) and hit a Qt6 “not compatible (64bit)” CMake error, build using the repo script (it forces the correct MinGW toolchain):
+```
+powershell -ExecutionPolicy Bypass -File .\scripts\build_qt_mingw64.ps1
+```
+Optional (pick a specific Qt version folder):
+```
+powershell -ExecutionPolicy Bypass -File .\scripts\build_qt_mingw64.ps1 -QtVersion 6.10.2
+```
+If you previously configured a build folder with the wrong compiler, rebuild clean:
+```
+powershell -ExecutionPolicy Bypass -File .\scripts\build_qt_mingw64.ps1 -QtVersion 6.10.2 -Clean
 ```
 
 **If CMake Cannot Find Qt**

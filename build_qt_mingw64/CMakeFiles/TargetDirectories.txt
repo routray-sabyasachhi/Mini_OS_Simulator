@@ -1,0 +1,3 @@
+D:/project8th/MiniOS-Simulator/build_qt_mingw64/CMakeFiles/MiniOSSimulator.dir
+D:/project8th/MiniOS-Simulator/build_qt_mingw64/CMakeFiles/edit_cache.dir
+D:/project8th/MiniOS-Simulator/build_qt_mingw64/CMakeFiles/rebuild_cache.dir
