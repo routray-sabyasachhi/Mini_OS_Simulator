@@ -52,6 +52,7 @@ Run this from the project root:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\build_qt_mingw64.ps1
+
 ```
 
 ## How to Run
