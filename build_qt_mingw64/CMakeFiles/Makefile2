@@ -62,10 +62,12 @@ CMAKE_BINARY_DIR = D:\project8th\MiniOS-Simulator\build_qt_mingw64
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/MiniOSCore.dir/all
 all: CMakeFiles/MiniOSSimulator.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
+codegen: CMakeFiles/MiniOSCore.dir/codegen
 codegen: CMakeFiles/MiniOSSimulator.dir/codegen
 .PHONY : codegen
 
@@ -74,22 +76,55 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/MiniOSCore.dir/clean
 clean: CMakeFiles/MiniOSSimulator.dir/clean
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/MiniOSCore.dir
+
+# All Build rule for target.
+CMakeFiles/MiniOSCore.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\project8th\MiniOS-Simulator\build_qt_mingw64\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target MiniOSCore"
+.PHONY : CMakeFiles/MiniOSCore.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/MiniOSCore.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\project8th\MiniOS-Simulator\build_qt_mingw64\CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/MiniOSCore.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\project8th\MiniOS-Simulator\build_qt_mingw64\CMakeFiles 0
+.PHONY : CMakeFiles/MiniOSCore.dir/rule
+
+# Convenience name for target.
+MiniOSCore: CMakeFiles/MiniOSCore.dir/rule
+.PHONY : MiniOSCore
+
+# codegen rule for target.
+CMakeFiles/MiniOSCore.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\project8th\MiniOS-Simulator\build_qt_mingw64\CMakeFiles --progress-num=1,2,3,4,5,6 "Finished codegen for target MiniOSCore"
+.PHONY : CMakeFiles/MiniOSCore.dir/codegen
+
+# clean rule for target.
+CMakeFiles/MiniOSCore.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/clean
+.PHONY : CMakeFiles/MiniOSCore.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/MiniOSSimulator.dir
 
 # All Build rule for target.
-CMakeFiles/MiniOSSimulator.dir/all:
+CMakeFiles/MiniOSSimulator.dir/all: CMakeFiles/MiniOSCore.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\project8th\MiniOS-Simulator\build_qt_mingw64\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 "Built target MiniOSSimulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\project8th\MiniOS-Simulator\build_qt_mingw64\CMakeFiles --progress-num=7,8 "Built target MiniOSSimulator"
 .PHONY : CMakeFiles/MiniOSSimulator.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MiniOSSimulator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\project8th\MiniOS-Simulator\build_qt_mingw64\CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\project8th\MiniOS-Simulator\build_qt_mingw64\CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/MiniOSSimulator.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\project8th\MiniOS-Simulator\build_qt_mingw64\CMakeFiles 0
 .PHONY : CMakeFiles/MiniOSSimulator.dir/rule
@@ -101,7 +136,7 @@ MiniOSSimulator: CMakeFiles/MiniOSSimulator.dir/rule
 # codegen rule for target.
 CMakeFiles/MiniOSSimulator.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\project8th\MiniOS-Simulator\build_qt_mingw64\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 "Finished codegen for target MiniOSSimulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\project8th\MiniOS-Simulator\build_qt_mingw64\CMakeFiles --progress-num=7,8 "Finished codegen for target MiniOSSimulator"
 .PHONY : CMakeFiles/MiniOSSimulator.dir/codegen
 
 # clean rule for target.

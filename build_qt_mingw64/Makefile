@@ -116,6 +116,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named MiniOSCore
+
+# Build rule for target.
+MiniOSCore: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 MiniOSCore
+.PHONY : MiniOSCore
+
+# fast build rule for target.
+MiniOSCore/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/build
+.PHONY : MiniOSCore/fast
+
+#=============================================================================
 # Target rules for targets named MiniOSSimulator
 
 # Build rule for target.
@@ -128,84 +141,12 @@ MiniOSSimulator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/build
 .PHONY : MiniOSSimulator/fast
 
-cpu_scheduling/fcfs.obj: cpu_scheduling/fcfs.cpp.obj
-.PHONY : cpu_scheduling/fcfs.obj
-
-# target to build an object file
-cpu_scheduling/fcfs.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/fcfs.cpp.obj
-.PHONY : cpu_scheduling/fcfs.cpp.obj
-
-cpu_scheduling/fcfs.i: cpu_scheduling/fcfs.cpp.i
-.PHONY : cpu_scheduling/fcfs.i
-
-# target to preprocess a source file
-cpu_scheduling/fcfs.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/fcfs.cpp.i
-.PHONY : cpu_scheduling/fcfs.cpp.i
-
-cpu_scheduling/fcfs.s: cpu_scheduling/fcfs.cpp.s
-.PHONY : cpu_scheduling/fcfs.s
-
-# target to generate assembly for a file
-cpu_scheduling/fcfs.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/fcfs.cpp.s
-.PHONY : cpu_scheduling/fcfs.cpp.s
-
-cpu_scheduling/priority.obj: cpu_scheduling/priority.cpp.obj
-.PHONY : cpu_scheduling/priority.obj
-
-# target to build an object file
-cpu_scheduling/priority.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/priority.cpp.obj
-.PHONY : cpu_scheduling/priority.cpp.obj
-
-cpu_scheduling/priority.i: cpu_scheduling/priority.cpp.i
-.PHONY : cpu_scheduling/priority.i
-
-# target to preprocess a source file
-cpu_scheduling/priority.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/priority.cpp.i
-.PHONY : cpu_scheduling/priority.cpp.i
-
-cpu_scheduling/priority.s: cpu_scheduling/priority.cpp.s
-.PHONY : cpu_scheduling/priority.s
-
-# target to generate assembly for a file
-cpu_scheduling/priority.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/priority.cpp.s
-.PHONY : cpu_scheduling/priority.cpp.s
-
-cpu_scheduling/round_robin.obj: cpu_scheduling/round_robin.cpp.obj
-.PHONY : cpu_scheduling/round_robin.obj
-
-# target to build an object file
-cpu_scheduling/round_robin.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/round_robin.cpp.obj
-.PHONY : cpu_scheduling/round_robin.cpp.obj
-
-cpu_scheduling/round_robin.i: cpu_scheduling/round_robin.cpp.i
-.PHONY : cpu_scheduling/round_robin.i
-
-# target to preprocess a source file
-cpu_scheduling/round_robin.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/round_robin.cpp.i
-.PHONY : cpu_scheduling/round_robin.cpp.i
-
-cpu_scheduling/round_robin.s: cpu_scheduling/round_robin.cpp.s
-.PHONY : cpu_scheduling/round_robin.s
-
-# target to generate assembly for a file
-cpu_scheduling/round_robin.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/round_robin.cpp.s
-.PHONY : cpu_scheduling/round_robin.cpp.s
-
 cpu_scheduling/schedulers_gui.obj: cpu_scheduling/schedulers_gui.cpp.obj
 .PHONY : cpu_scheduling/schedulers_gui.obj
 
 # target to build an object file
 cpu_scheduling/schedulers_gui.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/schedulers_gui.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/cpu_scheduling/schedulers_gui.cpp.obj
 .PHONY : cpu_scheduling/schedulers_gui.cpp.obj
 
 cpu_scheduling/schedulers_gui.i: cpu_scheduling/schedulers_gui.cpp.i
@@ -213,7 +154,7 @@ cpu_scheduling/schedulers_gui.i: cpu_scheduling/schedulers_gui.cpp.i
 
 # target to preprocess a source file
 cpu_scheduling/schedulers_gui.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/schedulers_gui.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/cpu_scheduling/schedulers_gui.cpp.i
 .PHONY : cpu_scheduling/schedulers_gui.cpp.i
 
 cpu_scheduling/schedulers_gui.s: cpu_scheduling/schedulers_gui.cpp.s
@@ -221,63 +162,15 @@ cpu_scheduling/schedulers_gui.s: cpu_scheduling/schedulers_gui.cpp.s
 
 # target to generate assembly for a file
 cpu_scheduling/schedulers_gui.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/schedulers_gui.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/cpu_scheduling/schedulers_gui.cpp.s
 .PHONY : cpu_scheduling/schedulers_gui.cpp.s
-
-cpu_scheduling/sjf.obj: cpu_scheduling/sjf.cpp.obj
-.PHONY : cpu_scheduling/sjf.obj
-
-# target to build an object file
-cpu_scheduling/sjf.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/sjf.cpp.obj
-.PHONY : cpu_scheduling/sjf.cpp.obj
-
-cpu_scheduling/sjf.i: cpu_scheduling/sjf.cpp.i
-.PHONY : cpu_scheduling/sjf.i
-
-# target to preprocess a source file
-cpu_scheduling/sjf.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/sjf.cpp.i
-.PHONY : cpu_scheduling/sjf.cpp.i
-
-cpu_scheduling/sjf.s: cpu_scheduling/sjf.cpp.s
-.PHONY : cpu_scheduling/sjf.s
-
-# target to generate assembly for a file
-cpu_scheduling/sjf.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/cpu_scheduling/sjf.cpp.s
-.PHONY : cpu_scheduling/sjf.cpp.s
-
-disk_scheduling/cscan.obj: disk_scheduling/cscan.cpp.obj
-.PHONY : disk_scheduling/cscan.obj
-
-# target to build an object file
-disk_scheduling/cscan.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/cscan.cpp.obj
-.PHONY : disk_scheduling/cscan.cpp.obj
-
-disk_scheduling/cscan.i: disk_scheduling/cscan.cpp.i
-.PHONY : disk_scheduling/cscan.i
-
-# target to preprocess a source file
-disk_scheduling/cscan.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/cscan.cpp.i
-.PHONY : disk_scheduling/cscan.cpp.i
-
-disk_scheduling/cscan.s: disk_scheduling/cscan.cpp.s
-.PHONY : disk_scheduling/cscan.s
-
-# target to generate assembly for a file
-disk_scheduling/cscan.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/cscan.cpp.s
-.PHONY : disk_scheduling/cscan.cpp.s
 
 disk_scheduling/disk_algorithms.obj: disk_scheduling/disk_algorithms.cpp.obj
 .PHONY : disk_scheduling/disk_algorithms.obj
 
 # target to build an object file
 disk_scheduling/disk_algorithms.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/disk_algorithms.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/disk_scheduling/disk_algorithms.cpp.obj
 .PHONY : disk_scheduling/disk_algorithms.cpp.obj
 
 disk_scheduling/disk_algorithms.i: disk_scheduling/disk_algorithms.cpp.i
@@ -285,7 +178,7 @@ disk_scheduling/disk_algorithms.i: disk_scheduling/disk_algorithms.cpp.i
 
 # target to preprocess a source file
 disk_scheduling/disk_algorithms.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/disk_algorithms.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/disk_scheduling/disk_algorithms.cpp.i
 .PHONY : disk_scheduling/disk_algorithms.cpp.i
 
 disk_scheduling/disk_algorithms.s: disk_scheduling/disk_algorithms.cpp.s
@@ -293,80 +186,8 @@ disk_scheduling/disk_algorithms.s: disk_scheduling/disk_algorithms.cpp.s
 
 # target to generate assembly for a file
 disk_scheduling/disk_algorithms.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/disk_algorithms.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/disk_scheduling/disk_algorithms.cpp.s
 .PHONY : disk_scheduling/disk_algorithms.cpp.s
-
-disk_scheduling/fcfs_disk.obj: disk_scheduling/fcfs_disk.cpp.obj
-.PHONY : disk_scheduling/fcfs_disk.obj
-
-# target to build an object file
-disk_scheduling/fcfs_disk.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/fcfs_disk.cpp.obj
-.PHONY : disk_scheduling/fcfs_disk.cpp.obj
-
-disk_scheduling/fcfs_disk.i: disk_scheduling/fcfs_disk.cpp.i
-.PHONY : disk_scheduling/fcfs_disk.i
-
-# target to preprocess a source file
-disk_scheduling/fcfs_disk.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/fcfs_disk.cpp.i
-.PHONY : disk_scheduling/fcfs_disk.cpp.i
-
-disk_scheduling/fcfs_disk.s: disk_scheduling/fcfs_disk.cpp.s
-.PHONY : disk_scheduling/fcfs_disk.s
-
-# target to generate assembly for a file
-disk_scheduling/fcfs_disk.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/fcfs_disk.cpp.s
-.PHONY : disk_scheduling/fcfs_disk.cpp.s
-
-disk_scheduling/scan.obj: disk_scheduling/scan.cpp.obj
-.PHONY : disk_scheduling/scan.obj
-
-# target to build an object file
-disk_scheduling/scan.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/scan.cpp.obj
-.PHONY : disk_scheduling/scan.cpp.obj
-
-disk_scheduling/scan.i: disk_scheduling/scan.cpp.i
-.PHONY : disk_scheduling/scan.i
-
-# target to preprocess a source file
-disk_scheduling/scan.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/scan.cpp.i
-.PHONY : disk_scheduling/scan.cpp.i
-
-disk_scheduling/scan.s: disk_scheduling/scan.cpp.s
-.PHONY : disk_scheduling/scan.s
-
-# target to generate assembly for a file
-disk_scheduling/scan.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/scan.cpp.s
-.PHONY : disk_scheduling/scan.cpp.s
-
-disk_scheduling/sstf.obj: disk_scheduling/sstf.cpp.obj
-.PHONY : disk_scheduling/sstf.obj
-
-# target to build an object file
-disk_scheduling/sstf.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/sstf.cpp.obj
-.PHONY : disk_scheduling/sstf.cpp.obj
-
-disk_scheduling/sstf.i: disk_scheduling/sstf.cpp.i
-.PHONY : disk_scheduling/sstf.i
-
-# target to preprocess a source file
-disk_scheduling/sstf.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/sstf.cpp.i
-.PHONY : disk_scheduling/sstf.cpp.i
-
-disk_scheduling/sstf.s: disk_scheduling/sstf.cpp.s
-.PHONY : disk_scheduling/sstf.s
-
-# target to generate assembly for a file
-disk_scheduling/sstf.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/disk_scheduling/sstf.cpp.s
-.PHONY : disk_scheduling/sstf.cpp.s
 
 main_qt.obj: main_qt.cpp.obj
 .PHONY : main_qt.obj
@@ -392,60 +213,12 @@ main_qt.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/main_qt.cpp.s
 .PHONY : main_qt.cpp.s
 
-memory_management/contiguous/best_fit.obj: memory_management/contiguous/best_fit.cpp.obj
-.PHONY : memory_management/contiguous/best_fit.obj
-
-# target to build an object file
-memory_management/contiguous/best_fit.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/best_fit.cpp.obj
-.PHONY : memory_management/contiguous/best_fit.cpp.obj
-
-memory_management/contiguous/best_fit.i: memory_management/contiguous/best_fit.cpp.i
-.PHONY : memory_management/contiguous/best_fit.i
-
-# target to preprocess a source file
-memory_management/contiguous/best_fit.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/best_fit.cpp.i
-.PHONY : memory_management/contiguous/best_fit.cpp.i
-
-memory_management/contiguous/best_fit.s: memory_management/contiguous/best_fit.cpp.s
-.PHONY : memory_management/contiguous/best_fit.s
-
-# target to generate assembly for a file
-memory_management/contiguous/best_fit.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/best_fit.cpp.s
-.PHONY : memory_management/contiguous/best_fit.cpp.s
-
-memory_management/contiguous/first_fit.obj: memory_management/contiguous/first_fit.cpp.obj
-.PHONY : memory_management/contiguous/first_fit.obj
-
-# target to build an object file
-memory_management/contiguous/first_fit.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/first_fit.cpp.obj
-.PHONY : memory_management/contiguous/first_fit.cpp.obj
-
-memory_management/contiguous/first_fit.i: memory_management/contiguous/first_fit.cpp.i
-.PHONY : memory_management/contiguous/first_fit.i
-
-# target to preprocess a source file
-memory_management/contiguous/first_fit.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/first_fit.cpp.i
-.PHONY : memory_management/contiguous/first_fit.cpp.i
-
-memory_management/contiguous/first_fit.s: memory_management/contiguous/first_fit.cpp.s
-.PHONY : memory_management/contiguous/first_fit.s
-
-# target to generate assembly for a file
-memory_management/contiguous/first_fit.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/first_fit.cpp.s
-.PHONY : memory_management/contiguous/first_fit.cpp.s
-
 memory_management/contiguous/memory_algorithms.obj: memory_management/contiguous/memory_algorithms.cpp.obj
 .PHONY : memory_management/contiguous/memory_algorithms.obj
 
 # target to build an object file
 memory_management/contiguous/memory_algorithms.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/memory_algorithms.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/memory_management/contiguous/memory_algorithms.cpp.obj
 .PHONY : memory_management/contiguous/memory_algorithms.cpp.obj
 
 memory_management/contiguous/memory_algorithms.i: memory_management/contiguous/memory_algorithms.cpp.i
@@ -453,7 +226,7 @@ memory_management/contiguous/memory_algorithms.i: memory_management/contiguous/m
 
 # target to preprocess a source file
 memory_management/contiguous/memory_algorithms.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/memory_algorithms.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/memory_management/contiguous/memory_algorithms.cpp.i
 .PHONY : memory_management/contiguous/memory_algorithms.cpp.i
 
 memory_management/contiguous/memory_algorithms.s: memory_management/contiguous/memory_algorithms.cpp.s
@@ -461,39 +234,15 @@ memory_management/contiguous/memory_algorithms.s: memory_management/contiguous/m
 
 # target to generate assembly for a file
 memory_management/contiguous/memory_algorithms.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/memory_algorithms.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/memory_management/contiguous/memory_algorithms.cpp.s
 .PHONY : memory_management/contiguous/memory_algorithms.cpp.s
-
-memory_management/contiguous/next_fit.obj: memory_management/contiguous/next_fit.cpp.obj
-.PHONY : memory_management/contiguous/next_fit.obj
-
-# target to build an object file
-memory_management/contiguous/next_fit.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/next_fit.cpp.obj
-.PHONY : memory_management/contiguous/next_fit.cpp.obj
-
-memory_management/contiguous/next_fit.i: memory_management/contiguous/next_fit.cpp.i
-.PHONY : memory_management/contiguous/next_fit.i
-
-# target to preprocess a source file
-memory_management/contiguous/next_fit.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/next_fit.cpp.i
-.PHONY : memory_management/contiguous/next_fit.cpp.i
-
-memory_management/contiguous/next_fit.s: memory_management/contiguous/next_fit.cpp.s
-.PHONY : memory_management/contiguous/next_fit.s
-
-# target to generate assembly for a file
-memory_management/contiguous/next_fit.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/contiguous/next_fit.cpp.s
-.PHONY : memory_management/contiguous/next_fit.cpp.s
 
 memory_management/non_contiguous/paging_algorithms.obj: memory_management/non_contiguous/paging_algorithms.cpp.obj
 .PHONY : memory_management/non_contiguous/paging_algorithms.obj
 
 # target to build an object file
 memory_management/non_contiguous/paging_algorithms.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/non_contiguous/paging_algorithms.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/memory_management/non_contiguous/paging_algorithms.cpp.obj
 .PHONY : memory_management/non_contiguous/paging_algorithms.cpp.obj
 
 memory_management/non_contiguous/paging_algorithms.i: memory_management/non_contiguous/paging_algorithms.cpp.i
@@ -501,7 +250,7 @@ memory_management/non_contiguous/paging_algorithms.i: memory_management/non_cont
 
 # target to preprocess a source file
 memory_management/non_contiguous/paging_algorithms.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/non_contiguous/paging_algorithms.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/memory_management/non_contiguous/paging_algorithms.cpp.i
 .PHONY : memory_management/non_contiguous/paging_algorithms.cpp.i
 
 memory_management/non_contiguous/paging_algorithms.s: memory_management/non_contiguous/paging_algorithms.cpp.s
@@ -509,111 +258,15 @@ memory_management/non_contiguous/paging_algorithms.s: memory_management/non_cont
 
 # target to generate assembly for a file
 memory_management/non_contiguous/paging_algorithms.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/non_contiguous/paging_algorithms.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/memory_management/non_contiguous/paging_algorithms.cpp.s
 .PHONY : memory_management/non_contiguous/paging_algorithms.cpp.s
-
-memory_management/non_contiguous/paging_console.obj: memory_management/non_contiguous/paging_console.cpp.obj
-.PHONY : memory_management/non_contiguous/paging_console.obj
-
-# target to build an object file
-memory_management/non_contiguous/paging_console.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/non_contiguous/paging_console.cpp.obj
-.PHONY : memory_management/non_contiguous/paging_console.cpp.obj
-
-memory_management/non_contiguous/paging_console.i: memory_management/non_contiguous/paging_console.cpp.i
-.PHONY : memory_management/non_contiguous/paging_console.i
-
-# target to preprocess a source file
-memory_management/non_contiguous/paging_console.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/non_contiguous/paging_console.cpp.i
-.PHONY : memory_management/non_contiguous/paging_console.cpp.i
-
-memory_management/non_contiguous/paging_console.s: memory_management/non_contiguous/paging_console.cpp.s
-.PHONY : memory_management/non_contiguous/paging_console.s
-
-# target to generate assembly for a file
-memory_management/non_contiguous/paging_console.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/memory_management/non_contiguous/paging_console.cpp.s
-.PHONY : memory_management/non_contiguous/paging_console.cpp.s
-
-page_replacement/fifo.obj: page_replacement/fifo.cpp.obj
-.PHONY : page_replacement/fifo.obj
-
-# target to build an object file
-page_replacement/fifo.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/fifo.cpp.obj
-.PHONY : page_replacement/fifo.cpp.obj
-
-page_replacement/fifo.i: page_replacement/fifo.cpp.i
-.PHONY : page_replacement/fifo.i
-
-# target to preprocess a source file
-page_replacement/fifo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/fifo.cpp.i
-.PHONY : page_replacement/fifo.cpp.i
-
-page_replacement/fifo.s: page_replacement/fifo.cpp.s
-.PHONY : page_replacement/fifo.s
-
-# target to generate assembly for a file
-page_replacement/fifo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/fifo.cpp.s
-.PHONY : page_replacement/fifo.cpp.s
-
-page_replacement/lru.obj: page_replacement/lru.cpp.obj
-.PHONY : page_replacement/lru.obj
-
-# target to build an object file
-page_replacement/lru.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/lru.cpp.obj
-.PHONY : page_replacement/lru.cpp.obj
-
-page_replacement/lru.i: page_replacement/lru.cpp.i
-.PHONY : page_replacement/lru.i
-
-# target to preprocess a source file
-page_replacement/lru.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/lru.cpp.i
-.PHONY : page_replacement/lru.cpp.i
-
-page_replacement/lru.s: page_replacement/lru.cpp.s
-.PHONY : page_replacement/lru.s
-
-# target to generate assembly for a file
-page_replacement/lru.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/lru.cpp.s
-.PHONY : page_replacement/lru.cpp.s
-
-page_replacement/optimal.obj: page_replacement/optimal.cpp.obj
-.PHONY : page_replacement/optimal.obj
-
-# target to build an object file
-page_replacement/optimal.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/optimal.cpp.obj
-.PHONY : page_replacement/optimal.cpp.obj
-
-page_replacement/optimal.i: page_replacement/optimal.cpp.i
-.PHONY : page_replacement/optimal.i
-
-# target to preprocess a source file
-page_replacement/optimal.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/optimal.cpp.i
-.PHONY : page_replacement/optimal.cpp.i
-
-page_replacement/optimal.s: page_replacement/optimal.cpp.s
-.PHONY : page_replacement/optimal.s
-
-# target to generate assembly for a file
-page_replacement/optimal.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/optimal.cpp.s
-.PHONY : page_replacement/optimal.cpp.s
 
 page_replacement/page_algorithms.obj: page_replacement/page_algorithms.cpp.obj
 .PHONY : page_replacement/page_algorithms.obj
 
 # target to build an object file
 page_replacement/page_algorithms.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/page_algorithms.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/page_replacement/page_algorithms.cpp.obj
 .PHONY : page_replacement/page_algorithms.cpp.obj
 
 page_replacement/page_algorithms.i: page_replacement/page_algorithms.cpp.i
@@ -621,7 +274,7 @@ page_replacement/page_algorithms.i: page_replacement/page_algorithms.cpp.i
 
 # target to preprocess a source file
 page_replacement/page_algorithms.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/page_algorithms.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/page_replacement/page_algorithms.cpp.i
 .PHONY : page_replacement/page_algorithms.cpp.i
 
 page_replacement/page_algorithms.s: page_replacement/page_algorithms.cpp.s
@@ -629,32 +282,8 @@ page_replacement/page_algorithms.s: page_replacement/page_algorithms.cpp.s
 
 # target to generate assembly for a file
 page_replacement/page_algorithms.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/page_replacement/page_algorithms.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSCore.dir\build.make CMakeFiles/MiniOSCore.dir/page_replacement/page_algorithms.cpp.s
 .PHONY : page_replacement/page_algorithms.cpp.s
-
-utils/input_helper_qt.obj: utils/input_helper_qt.cpp.obj
-.PHONY : utils/input_helper_qt.obj
-
-# target to build an object file
-utils/input_helper_qt.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/utils/input_helper_qt.cpp.obj
-.PHONY : utils/input_helper_qt.cpp.obj
-
-utils/input_helper_qt.i: utils/input_helper_qt.cpp.i
-.PHONY : utils/input_helper_qt.i
-
-# target to preprocess a source file
-utils/input_helper_qt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/utils/input_helper_qt.cpp.i
-.PHONY : utils/input_helper_qt.cpp.i
-
-utils/input_helper_qt.s: utils/input_helper_qt.cpp.s
-.PHONY : utils/input_helper_qt.s
-
-# target to generate assembly for a file
-utils/input_helper_qt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MiniOSSimulator.dir\build.make CMakeFiles/MiniOSSimulator.dir/utils/input_helper_qt.cpp.s
-.PHONY : utils/input_helper_qt.cpp.s
 
 # Help Target
 help:
@@ -664,73 +293,26 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... MiniOSCore
 	@echo ... MiniOSSimulator
-	@echo ... cpu_scheduling/fcfs.obj
-	@echo ... cpu_scheduling/fcfs.i
-	@echo ... cpu_scheduling/fcfs.s
-	@echo ... cpu_scheduling/priority.obj
-	@echo ... cpu_scheduling/priority.i
-	@echo ... cpu_scheduling/priority.s
-	@echo ... cpu_scheduling/round_robin.obj
-	@echo ... cpu_scheduling/round_robin.i
-	@echo ... cpu_scheduling/round_robin.s
 	@echo ... cpu_scheduling/schedulers_gui.obj
 	@echo ... cpu_scheduling/schedulers_gui.i
 	@echo ... cpu_scheduling/schedulers_gui.s
-	@echo ... cpu_scheduling/sjf.obj
-	@echo ... cpu_scheduling/sjf.i
-	@echo ... cpu_scheduling/sjf.s
-	@echo ... disk_scheduling/cscan.obj
-	@echo ... disk_scheduling/cscan.i
-	@echo ... disk_scheduling/cscan.s
 	@echo ... disk_scheduling/disk_algorithms.obj
 	@echo ... disk_scheduling/disk_algorithms.i
 	@echo ... disk_scheduling/disk_algorithms.s
-	@echo ... disk_scheduling/fcfs_disk.obj
-	@echo ... disk_scheduling/fcfs_disk.i
-	@echo ... disk_scheduling/fcfs_disk.s
-	@echo ... disk_scheduling/scan.obj
-	@echo ... disk_scheduling/scan.i
-	@echo ... disk_scheduling/scan.s
-	@echo ... disk_scheduling/sstf.obj
-	@echo ... disk_scheduling/sstf.i
-	@echo ... disk_scheduling/sstf.s
 	@echo ... main_qt.obj
 	@echo ... main_qt.i
 	@echo ... main_qt.s
-	@echo ... memory_management/contiguous/best_fit.obj
-	@echo ... memory_management/contiguous/best_fit.i
-	@echo ... memory_management/contiguous/best_fit.s
-	@echo ... memory_management/contiguous/first_fit.obj
-	@echo ... memory_management/contiguous/first_fit.i
-	@echo ... memory_management/contiguous/first_fit.s
 	@echo ... memory_management/contiguous/memory_algorithms.obj
 	@echo ... memory_management/contiguous/memory_algorithms.i
 	@echo ... memory_management/contiguous/memory_algorithms.s
-	@echo ... memory_management/contiguous/next_fit.obj
-	@echo ... memory_management/contiguous/next_fit.i
-	@echo ... memory_management/contiguous/next_fit.s
 	@echo ... memory_management/non_contiguous/paging_algorithms.obj
 	@echo ... memory_management/non_contiguous/paging_algorithms.i
 	@echo ... memory_management/non_contiguous/paging_algorithms.s
-	@echo ... memory_management/non_contiguous/paging_console.obj
-	@echo ... memory_management/non_contiguous/paging_console.i
-	@echo ... memory_management/non_contiguous/paging_console.s
-	@echo ... page_replacement/fifo.obj
-	@echo ... page_replacement/fifo.i
-	@echo ... page_replacement/fifo.s
-	@echo ... page_replacement/lru.obj
-	@echo ... page_replacement/lru.i
-	@echo ... page_replacement/lru.s
-	@echo ... page_replacement/optimal.obj
-	@echo ... page_replacement/optimal.i
-	@echo ... page_replacement/optimal.s
 	@echo ... page_replacement/page_algorithms.obj
 	@echo ... page_replacement/page_algorithms.i
 	@echo ... page_replacement/page_algorithms.s
-	@echo ... utils/input_helper_qt.obj
-	@echo ... utils/input_helper_qt.i
-	@echo ... utils/input_helper_qt.s
 .PHONY : help
 
 

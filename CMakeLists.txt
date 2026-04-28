@@ -3,32 +3,21 @@ project(MiniOSSimulator LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
-add_executable(MiniOSSimulator
-    main_qt.cpp
-    utils/input_helper_qt.cpp
-    cpu_scheduling/fcfs.cpp
-    cpu_scheduling/sjf.cpp
-    cpu_scheduling/priority.cpp
-    cpu_scheduling/round_robin.cpp
+set(MINIOS_CORE_SOURCES
     cpu_scheduling/schedulers_gui.cpp
-    memory_management/contiguous/first_fit.cpp
-    memory_management/contiguous/best_fit.cpp
-    memory_management/contiguous/next_fit.cpp
     memory_management/contiguous/memory_algorithms.cpp
     memory_management/non_contiguous/paging_algorithms.cpp
-    memory_management/non_contiguous/paging_console.cpp
-    page_replacement/fifo.cpp
-    page_replacement/lru.cpp
-    page_replacement/optimal.cpp
     page_replacement/page_algorithms.cpp
-    disk_scheduling/fcfs_disk.cpp
-    disk_scheduling/sstf.cpp
-    disk_scheduling/scan.cpp
-    disk_scheduling/cscan.cpp
     disk_scheduling/disk_algorithms.cpp
 )
 
-target_link_libraries(MiniOSSimulator PRIVATE Qt6::Widgets)
+add_library(MiniOSCore STATIC ${MINIOS_CORE_SOURCES})
+target_include_directories(MiniOSCore PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
+
+add_executable(MiniOSSimulator main_qt.cpp)
+target_link_libraries(MiniOSSimulator PRIVATE MiniOSCore Qt6::Widgets)
+target_include_directories(MiniOSSimulator PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")

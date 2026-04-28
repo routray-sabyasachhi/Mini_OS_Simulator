@@ -1,0 +1,2 @@
+C:\Qt\Tools\mingw1310_64\bin\ar.exe qc libMiniOSCore.a CMakeFiles/MiniOSCore.dir/cpu_scheduling/schedulers_gui.cpp.obj CMakeFiles/MiniOSCore.dir/memory_management/contiguous/memory_algorithms.cpp.obj CMakeFiles/MiniOSCore.dir/memory_management/non_contiguous/paging_algorithms.cpp.obj CMakeFiles/MiniOSCore.dir/page_replacement/page_algorithms.cpp.obj CMakeFiles/MiniOSCore.dir/disk_scheduling/disk_algorithms.cpp.obj
+C:\Qt\Tools\mingw1310_64\bin\ranlib.exe libMiniOSCore.a
